@@ -33,9 +33,12 @@ const replacement = {
     см: "size",
     хуяли: "if",
     ладно: "else",
-    Донбасс: "Array.isArray",
+    этоПивко:"Array.isArray",
     поебать: "break",
-    типо: "case"
+    типо: "case",
+    бутылка: "Object",
+    пиздень: "JSON.stringify",
+    пиздэц: "JSON.parse"
 };
 
 fs.readFile('./index.js', { encoding: "utf-8" }, function (err, data) {
@@ -43,7 +46,7 @@ fs.readFile('./index.js', { encoding: "utf-8" }, function (err, data) {
         console.log(err);
     } else {
         let code = data;
-        for (let i = 0; i < 35; i++) {
+        for (let i = 0; i < 39; i++) {
             let keys = Object.keys(replacement);
             let values = Object.values(replacement);
             code = code.replaceAll(keys[i], values[i]);
