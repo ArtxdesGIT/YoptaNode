@@ -2,15 +2,75 @@
 const { readFileSync } = require('fs');
 const path = require('path');
 const fs = require('fs');
-const fetch = require('node-fetch');
 process.removeAllListeners("warning");
 
 const cwdPath = process.cwd();
 
 let command = process.argv[2];
-const replacement = fetch('https://artxdes.repl.co/yopta?request=replacement').then(res => {
-  return res.json();
-});
+const replacement = {
+    высрать: "console.log",
+    черкануть: "const",
+    хуйнуть: "new",
+    пиздануть: "let",
+    спиздитьИз: "require",
+    внатуре: "=",
+    циферки: "Date.now",
+    калькулятор: "Math.floor",
+    хуйня: "Math.random",
+    секретик: "process.env",
+    уебать: "process.kill",
+    дрочить: "catch",
+    ебнуть: "try",
+    родить: "function",
+    поебалу: "return",
+    яТранс: "replace",
+    тегнуть: "var",
+    хули: "while",
+    кЧлену: "for",
+    кЧленам: "forEach",
+    путьКчлену: "process.cwd",
+    базараФильтруй: "filter",
+    сортируйКончу: "sort",
+    кастрировать: "slice",
+    кастрация: "splice",
+    пиздатость: "Math.pow",
+    значенияХуйни: "Object.values",
+    ключиХуйни: "Object.keys",
+    ивал: "eval",
+    сантиметры: "size",
+    хуяли: "if",
+    ладно: "else",
+    скобочки: "Array.isArray",
+    поебать: "break",
+    типо: "case",
+    вЗапой: "process.exit",
+    начатьБухать: "setTimeout",
+    пиздатее: ">",
+    хуёвее: "<",
+    понос: "console.error",
+    погоняло: "name",
+    хы: "{",
+    ых: "}",
+    задница: "file",
+    скоксм: "length",
+    доебаться: "prompt",
+    ебашит: "on",
+    плантацияКонопли: "Map",
+    чекнутьНегра: "get",
+    приручитьНегра: "set",
+    суицид: "exit",
+    удалитьПарашу: "delete",
+    я: "this",
+    проебалось: "!",
+    заебался: ";",
+    ворваться: "join",
+    начатьЕблю: "async",
+    подогнать: "+",
+    отобрать: "-",
+    такжеИ: "&&",
+    илиЖе: "||",
+    юзая: "used"
+};
 
 if (command === "--version" || command === "--v") {
   const packageJson = JSON.parse(readFileSync(path.join(process.cwd(), 
@@ -21,7 +81,6 @@ if (command === "--version" || command === "--v") {
   console.log(`
   --v (--version) - show currently YoptaNode version 
   --translate [file] - translates the file from node.js syntax to YoptaNode syntax.
-  --
 `);
 } else if (command === "--translate") {
   console.log("YoptaNode \x1b[43mWARN\x1b[0m \x1b[35moptional\x1b[0m the translation method works only with Node.js codes. If you want translate YoptaNode to Node.js use the site:")
@@ -50,13 +109,7 @@ const fileExtension = path.extname(file);
     process.exit(1);
   }
 
-  const fileExtension = path.extname(command);
-
-  // Проверка
-  if (fileExtension !== '.sk' && fileExtension !== '.js') {
-  console.log('ExtensionError: invalid file extension, supported file types are .sk and .js');
-    process.exit(1);
-  }
+  
 
   const filePath = path.join(process.cwd(), command);
 
@@ -82,4 +135,4 @@ const fileExtension = path.extname(file);
         }
     }
   });
-              }
+  }
